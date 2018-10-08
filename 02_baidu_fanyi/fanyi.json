@@ -1,0 +1,81 @@
+{
+  "errno": 0,
+  "en_ph": {
+    "ph_am_mp3": "\/1\/0\/e1\/55\/e155e1bb4a9c38e3baf90637ab7865df.mp3",
+    "ph_am": "la\u026af",
+    "ph_en_mp3": "\/oxford\/0\/a2\/25\/a225843f9166ea195c567d450eccc5f1.mp3",
+    "ph_en": "la\u026af",
+    "ph_other": "",
+    "ph_tts_mp3": "\/e\/1\/5\/e155e1bb4a9c38e3baf90637ab7865df.mp3"
+  },
+  "from": "zh",
+  "to": "en",
+  "trans": [
+    {
+      "dst": "Life",
+      "prefixWrap": 0,
+      "src": "\u4eba\u751f",
+      "relation": [],
+      "result": [
+        [
+          0,
+          "Life",
+          [
+            "0|6"
+          ],
+          [],
+          [
+            "0|6"
+          ],
+          [
+            "0|4"
+          ]
+        ]
+      ]
+    }
+  ],
+  "dict": {
+    "symbols": [
+      {
+        "word_symbol": "r\u00e9n sh\u0113ng",
+        "parts": [
+          {
+            "part_name": "",
+            "means": [
+              {
+                "has_mean": "1",
+                "means": [
+                  "\u751f\u6d3b\uff0c\u751f\u8ba1",
+                  "\u751f\u547d\uff0c\u6027\u547d",
+                  "\u4e00\u751f\uff0c\u5bff\u547d",
+                  "\u4eba\u751f\uff0c\u5c18\u4e16"
+                ],
+                "text": "life",
+                "part": "n.",
+                "split": "1",
+                "word_mean": "life"
+              },
+              {
+                "domain": "[\u7535\u5f71]",
+                "has_mean": "0",
+                "means": [
+                  "[\u7535\u5f71]\u4eba\u751f"
+                ],
+                "text": "Life",
+                "part": "",
+                "split": "0",
+                "word_mean": "[\u7535\u5f71]Life"
+              }
+            ]
+          }
+        ],
+        "symbol_mp3": "http:\/\/res.iciba.com\/hanyu\/ci\/85\/38\/8538bff002f10b85868ea583c93a5cec.mp3"
+      }
+    ],
+    "word_name": "\u4eba\u751f",
+    "from": "kingsoft",
+    "word_means": [
+      "life"
+    ]
+  }
+}

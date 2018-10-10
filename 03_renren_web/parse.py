@@ -8,7 +8,7 @@ headers = {
 
 @retry(stop_max_attempt_number=3)
 def _parse_url(url):
-    print("*"*50)
+    print("*" * 50)
     resp = requests.get(url, headers=headers, timeout=3)
     print(type(resp.status_code))
     assert resp.status_code == 200  # 这里是 int 类型
@@ -28,5 +28,3 @@ if __name__ == '__main__':
     url = 'http://www.baidu.com'
     html_str = parse_url(url)
     print(html_str[:20])
-
-

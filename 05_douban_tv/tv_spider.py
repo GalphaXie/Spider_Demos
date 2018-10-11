@@ -9,9 +9,8 @@ from pprint import pprint
 import requests
 
 """
-https://m.douban.com/rexxar/api/v2/subject_collection/filter_tv_english_hot/items?os=ios&for_mobile=1&callback=jsonp4&start=54&count=18&loc_id=108288&_=0
-https://m.douban.com/rexxar/api/v2/subject_collection/filter_tv_english_hot/items?os=ios&for_mobile=1&callback=jsonp5&start=72&count=18&loc_id=108288&_=0
-Referer: https://m.douban.com/tv/american
+原始入口
+https://m.douban.com/tv/
 """
 
 

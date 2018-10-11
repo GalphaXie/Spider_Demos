@@ -30,7 +30,7 @@ if not len(ret):
 # 思路: 为了更加直观的显示,我们这里采取写入文件查看
 
 with open('data.json', 'w', encoding='utf-8') as f:
-    # f.write(json.loads(ret[0]))  # 写法错误
+    # f.write(json.dumps(ret[0]))  # 写法错误
     f.write(ret[0])
 
 data_dict = json.loads(ret[0])

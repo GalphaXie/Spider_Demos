@@ -64,6 +64,7 @@ class DouBanSpider:
         """字典数据保存为csv文件"""
         file_name = 'british.csv' if choice == 0 else 'american.csv'
         with open(file_name, 'a', encoding='utf-8') as csvfile:
+            # 必须所有字段
             fieldnames = ["id", "title", "label", "actors", "description", "price", "date", "info", "url", 'uri',
                           "release_date", "cover", "directors", "reviewer_name", 'original_price', 'null_rating_reason',
                           'card_subtitle', 'type', 'subtype', 'has_linewatch', 'year', 'rating', 'interest', 'actions',

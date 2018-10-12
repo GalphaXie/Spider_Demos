@@ -63,6 +63,6 @@ class TieBaSpider:
             #5.获取next_url，循环2-5
 
 if __name__ == '__main__':
-    tieba = TieBaSpider("传智播客")
+    tieba = TieBaSpider("妹子")
     tieba.run()
 

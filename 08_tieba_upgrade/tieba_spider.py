@@ -38,14 +38,32 @@ class TiebaSpider:
         for a in a_list:
             item = {}
             # url 要拼接
-            item['href'] = 'https://tieba.baidu.com' + a.xpath('./@href')[0] if len(a.xpath('./@href')) > 0 else None
+            item['href'] = self.part_url + a.xpath('./@href')[0] if len(a.xpath('./@href')) > 0 else None
             item['title'] = a.xpath('./text()')[0] if len(a.xpath('./@href')) > 0 else None
+            item["img_list"] = self.get_img_list(item["href"], [])
             # print(item)
             data_list.append(item)
         # 获取下一页的url地址
         next_url = self.part_url + html.xpath('//a[contains(text(), "下一页")]/@href')[0] if len(
             html.xpath('//a[contains(text(), "下一页")]/@href')) > 0 else None
         return data_list, next_url
+
+    def get_img_list(self, detail_url, img_list):
+        # 1.发送请求,获取响应
+        detail_html_str = self.get_response(detail_url)
+        # 2.提取数据
+        detail_html = etree.HTML(detail_html_str)
+        img_list += detail_html.xpath("//img[@class='BDE_Image']/@src")
+
+        # 详情页下一页的url地址
+        next_url = detail_html.xpath("//a[text()='下一页']/@href")
+        next_url = self.part_url + next_url[0] if len(next_url) > 0 else None
+        if next_url is not None:  # 当存在详情页的下一页，请求
+            return self.get_img_list(next_url, img_list)
+
+        # else不用写
+        img_list = [requests.utils.unquote(i).split("src=")[-1] for i in img_list]
+        return img_list
 
     def save_content(self, data):
         with open('tieba.txt', 'a', encoding='utf-8') as f:
@@ -73,6 +91,6 @@ class TiebaSpider:
 if __name__ == '__main__':
     # print('请在终端按照格式[python3 tieba_spider.py 贴吧名],例如[python3 tieba_spider.py "李毅"]运行该程序')
     # tieba_name = sys.argv[1]
-    tieba_name = '妹子'
+    tieba_name = '武汉'
     spider = TiebaSpider(tieba_name)
     spider.run()

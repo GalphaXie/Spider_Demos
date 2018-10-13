@@ -39,6 +39,7 @@ class DouyuSpider:
             print(content)
             with open('douyu.txt', 'a', encoding='utf-8') as f:
                 f.write(json.dumps(content, ensure_ascii=False))
+                f.write('\n')
 
     def run(self):
         """主程序"""

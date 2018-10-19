@@ -14,7 +14,8 @@ BOT_NAME = 'myspider'
 SPIDER_MODULES = ['myspider.spiders']
 NEWSPIDER_MODULE = 'myspider.spiders'
 
-LOG_LEVEL = 'WARNING'
+# LOG_LEVEL = 'WARNING'
+LOG_LEVEL = 'DEBUG'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

@@ -1,0 +1,6 @@
+# Pycharm
+.idea/
+*.txt
+*.csv
+config.py
+Indiegogo.py

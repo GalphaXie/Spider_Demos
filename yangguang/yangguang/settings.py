@@ -14,8 +14,10 @@ BOT_NAME = 'yangguang'
 SPIDER_MODULES = ['yangguang.spiders']
 NEWSPIDER_MODULE = 'yangguang.spiders'
 
+LOG_LEVEL = 'WARNING'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = 'yangguang (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -63,9 +65,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'yangguang.pipelines.YangguangPipeline': 300,
-# }
+ITEM_PIPELINES = {
+    'yangguang.pipelines.YangguangPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

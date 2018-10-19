@@ -10,5 +10,11 @@ import scrapy
 
 class YangguangItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    num = scrapy.Field()  # 编号
+    title = scrapy.Field()  # 帖子标题
+    href = scrapy.Field()  # 帖子url
+    status = scrapy.Field()  # 处理状态
+    name = scrapy.Field()  # 用户名
+    publish_date = scrapy.Field()  # 发布日期
+    img = scrapy.Field()  # 图片地址
+    content = scrapy.Field()  # 文本内容

@@ -38,7 +38,7 @@ class SuningSpider(scrapy.Spider):
                     yield scrapy.Request(
                         item['s_href'],
                         callback=self.parse_book_list,
-                        meta={'item': item}
+                        meta={'item': deepcopy(item)}
                     )
 
                     # 发送请求，获取列表页第一页后一部分的数据
@@ -73,7 +73,31 @@ class SuningSpider(scrapy.Spider):
                 meta={"item": deepcopy(item)}
             )
 
-        # TODO 列表页翻页
+        # 列表页翻页: 说明,scrapy自带的过滤,避免了请求到后面,多次发送同一页面的请求.
+        # 前半部分数据的url地址
+        next_url_1 = "https://list.suning.com/emall/showProductList.do?ci={}&pg=03&cp={}&il=0&iy=0&adNumber=0&n=1&ch=4&sesab=ABBAAA&id=IDENTIFYING&cc=010"
+        # 后半部分数据的url地址
+        next_url_2 = "https://list.suning.com/emall/showProductList.do?ci={}&pg=03&cp={}&il=0&iy=0&adNumber=0&n=1&ch=4&sesab=ABBAAA&id=IDENTIFYING&cc=010&paging=1&sub=0"
+        ci = item["s_href"].split("-")[1]
+        # 当前的页码数
+        current_page = re.findall('param.currentPage = "(.*?)";', response.body.decode())[0]
+        # 总的页码数
+        total_page = re.findall('param.pageNumbers = "(.*?)";', response.body.decode())[0]
+        if int(current_page) < int(total_page):
+            next_page_num = int(current_page) + 1
+            next_url_1 = next_url_1.format(ci, next_page_num)  # 组装前半部分URL
+            yield scrapy.Request(
+                next_url_1,
+                callback=self.parse_book_list,
+                meta={"item": item}
+            )
+            # 构造后半部分数据的请求
+            next_url_2 = next_url_2.format(ci, next_page_num)
+            yield scrapy.Request(
+                next_url_2,
+                callback=self.parse_book_list,
+                meta={"item": item}
+            )
 
     def parse_book_detail(self, response):
         """处理图书详情页内容"""

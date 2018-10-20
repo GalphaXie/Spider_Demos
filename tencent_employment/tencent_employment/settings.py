@@ -15,9 +15,11 @@ SPIDER_MODULES = ['tencent_employment.spiders']
 NEWSPIDER_MODULE = 'tencent_employment.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = 'tencent_employment (+http://www.yourdomain.com)'
 USER_AGENT = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36']
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    ]
+
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -49,13 +51,17 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
 #    'tencent_employment.middlewares.TencentEmploymentSpiderMiddleware': 543,
+#
 # }
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'tencent_employment.middlewares.TencentEmploymentDownloaderMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    'tencent_employment.middlewares.TencentEmploymentDownloaderMiddleware': 543,
+    'tencent_employment.middlewares.RandomUserAgentMid': 542,
+    # 'tencent_employment.middlewares.ProxyMid': 545,
+    'tencent_employment.middlewares.CheckUA': 544,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html

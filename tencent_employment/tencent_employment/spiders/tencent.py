@@ -23,4 +23,5 @@ class TencentSpider(CrawlSpider):
         item["duty"] = response.xpath("//div[text()='工作职责：']/following-sibling::ul[1]/li/text()").extract()
         # 提取工作要求：
         item["require"] = response.xpath("//div[text()='工作要求：']/following-sibling::ul[1]/li/text()").extract()
+        print(response.request.headers, "*" * 100)
         return item

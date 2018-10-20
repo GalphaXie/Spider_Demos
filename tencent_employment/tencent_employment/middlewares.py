@@ -120,9 +120,19 @@ class TencentEmploymentDownloaderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
+USER_AGENT_LIST = [
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36']
+
 class RandomUserAgenMid:
     def process_request(self, request, spider):
-        request.headers["User-Agent"] = get_ua()
+        # request.headers["User-Agent"] = get_ua()
+        # 方法二:
+        # request.headers["User-Agent"] = random.choice(USER_AGENT_LIST)
+        # 方法三:
+        print(random.choice(spider.settings.USER_AGENT))
+        request.headers["User-Agent"] = random.choice(spider.USER_AGENT)  # 这两种方式都可以获取
+        request.headers["User-Agent"] = random.choice(spider.settings.USER_AGENT)
+
 
 
 class ProxyMid:

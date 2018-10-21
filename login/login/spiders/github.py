@@ -13,7 +13,7 @@ class GithubSpider(scrapy.Spider):
         commit = response.xpath("//input[@name='commit']/@value").extract_first()
         utf8 = response.xpath("//input[@name='utf8']/@value").extract_first()
         authenticity_token = response.xpath("//input[@name='authenticity_token']/@value").extract_first()
-        formdata = dict(
+        formdata = dict(  # 字典的写法,可以如此,不用给key加引号
             commit=commit,
             utf8=utf8,
             authenticity_token=authenticity_token,

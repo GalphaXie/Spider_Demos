@@ -12,3 +12,12 @@ class Item(object):
     def data(self):
         '''对外提供data进行访问，一定程度达到保护的作用'''
         return self._data
+
+
+if __name__ == '__main__':
+    """
+    演示:1.property 的只读特性　；２．不能赋值特性
+    """
+    item = Item({"name": 'zhangsan'})
+    print(item.data)
+    # item.data = {"name": "haha"}

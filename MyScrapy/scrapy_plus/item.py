@@ -21,3 +21,9 @@ if __name__ == '__main__':
     item = Item({"name": 'zhangsan'})
     print(item.data)
     # item.data = {"name": "haha"}
+
+    # 演示：3.可以添加属性和删除
+    item.data['age'] = 20
+    print(item.data)
+    item.data.pop('age')
+    print(item.data)

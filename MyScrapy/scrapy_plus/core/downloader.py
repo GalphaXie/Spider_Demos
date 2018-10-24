@@ -19,6 +19,6 @@ class Downloader(object):
                                  params=request.params, data=request.data)
         else:
             # 如果方法不是get或者post，抛出一个异常
-            raise Exception("不支持的请求方法")
+            raise Exception("不支持的请求方法{}".format(request.method))
         # 2. 构建响应对象,并返回
-        return Response(resp.url, resp.status_code, resp.headers, resp.content)
+        return Response(url=resp.url, status_code=resp.status_code, headers=resp.headers, body=resp.content)
